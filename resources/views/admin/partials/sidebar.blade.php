@@ -27,6 +27,12 @@
                         <span class="nav-text">Dashboard</span> <b class="caret"></b>
                     </a>
                 </li>
+                <li class="{{($currentAdminMenu == 'category')?'active':''}}">
+                    <a class="sidenav-item-link" href="/home" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Mitra</span> <b class="caret"></b>
+                    </a>
+                </li>
             </ul>
         </div>
 
