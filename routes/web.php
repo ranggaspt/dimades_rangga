@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MitraController;
+use App\Http\Controllers\Admin\ControllerInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,5 +16,5 @@ Route::get('/', function(){
 
 // --ROUTE DASHBOARD--
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::resource('admin/mitra', MitraController::class)->middleware('auth');
+Route::resource('admin/mitra', MitraController::class)->middleware('auth')->names('mitra');
 

@@ -21,14 +21,14 @@
         <div class="" data-simplebar style="height: 100%;">
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="{{($currentAdminMenu == 'category')?'active':''}}">
-                    <a class="sidenav-item-link" href="/home" aria-expanded="false" aria-controls="dashboard">
+            <li class="{{Request::path()=="admin/home" ? 'active' : ''}}">
+                    <a class="sidenav-item-link" href="{{route('home')}}" aria-expanded="false" aria-controls="dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span> <b class="caret"></b>
                     </a>
                 </li>
-                <li class="{{($currentAdminMenu == 'category')?'active':''}}">
-                    <a class="sidenav-item-link" href="/home" aria-expanded="false" aria-controls="dashboard">
+                <li class="{{Request::path()=="admin/mitra" ? 'active' : ''}}">
+                    <a class="sidenav-item-link" href="{{route('mitra.index')}}" aria-expanded="false" aria-controls="dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Mitra</span> <b class="caret"></b>
                     </a>

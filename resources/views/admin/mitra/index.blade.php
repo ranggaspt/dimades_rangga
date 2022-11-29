@@ -9,14 +9,6 @@
                 </div>
                 <div class="card-body">
                     @include('admin.partials.flash')
-                    <form class="row g-3" action="" method="GET">
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="q" placeholder="Search...">
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-3"><i class="mdi mdi-magnify"></i></button>
-                        </div>
-                    </form>
                     <table class="table table-bordered table-stripped">
                         <thead>
                             <th>No</th>
@@ -27,7 +19,7 @@
                             <th>Email</th>
                             <th>Aksi</th>
                         </thead>
-                        <!-- <tbody>
+                        <tbody>
                             @php
                             $i =0;
                             @endphp
@@ -40,9 +32,9 @@
                                 <td>{{$row->notelp}}</td>
                                 <td>{{$row->email}}</td>
                                 <td class="text-center">
-                                    <form action="/delete/{{$row->id}}" method="POST">
+                                    <form action="{{route('mitra.destroy', Crypt::encrypt($row->id))}}" method="POST">
 
-                                        <a class="btn btn-warning btn-sm" href="/tampilkandata/{{$row->id}}">Edit</a>
+                                        <a class="btn btn-warning btn-sm" href="{{route('mitra.edit', Crypt::encrypt($row->id))}}">Edit</a>
 
                                         @csrf
                                         @method('DELETE')
@@ -55,13 +47,13 @@
                             <tr>
                                 <td colspan="8">No record found</td>
                             </tr>
-                            @endforelse-->
+                            @endforelse
                         </tbody>
                     </table>
-                    <!-- {{ $data->links() }} -->
+                    {{ $data->links() }}
                 </div>
                 <div class="card-footer text-right">
-                    <!-- <a href="/tambahmitra" class="btn btn-primary">Tambah Data</a> -->
+                    <a href="{{route('mitra.create')}}" class="btn btn-primary">Tambah Data</a>
                 </div>
             </div>
         </div>
