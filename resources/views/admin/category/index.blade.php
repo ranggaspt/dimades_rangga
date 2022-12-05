@@ -5,18 +5,14 @@
         <div class="col-lg-12">
             <div class="card card-default">
                 <div class="card-header card-header-border-bottom">
-                    <h2>Data Mitra</h2>
+                    <h2>Data Category</h2>
                 </div>
                 <div class="card-body">
                     @include('admin.partials.flash')
                     <table class="table table-bordered table-stripped">
                         <thead>
                             <th>No</th>
-                            <th>Nama PT</th>
-                            <th>Nama Admin PT</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No telp</th>
-                            <th>Email</th>
+                            <th>Nama Kategori</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
@@ -27,13 +23,9 @@
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td>{{$row->name}}</td>
-                                <td>{{$row->namaAdminPt}}</td>
-                                <td>{{$row->jk}}</td>
-                                <td>{{$row->notelp}}</td>
-                                <td>{{$row->email}}</td>
                                 <td class="text-center">
-                                    <form action="{{route('mitra.destroy',Crypt::encrypt($row->id))}}" method="POST">
-                                        <a class="btn btn-warning btn-sm" href="{{route('mitra.edit',Crypt::encrypt($row->id))}}">Edit</a>
+                                    <form action="{{route('category.destroy',Crypt::encrypt($row->id))}}" method="POST">
+                                        <a class="btn btn-warning btn-sm" href="{{route('category.edit',Crypt::encrypt($row->id))}}">Edit</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
@@ -50,7 +42,7 @@
                     {{ $data->links() }}
                 </div>
                 <div class="card-footer text-right">
-                    <a href="{{route('mitra.create')}}" class="btn btn-primary">Tambah Data</a>
+                    <a href="{{route('category.create')}}" class="btn btn-primary">Tambah Data</a>
                 </div>
             </div>
         </div>

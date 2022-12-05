@@ -33,6 +33,12 @@
                         <span class="nav-text">Mitra</span> <b class="caret"></b>
                     </a>
                 </li>
+                <li class="{{Request::path()=="admin/category" ? 'active' : ''}}">
+                    <a class="sidenav-item-link" href="{{route('category.index')}}" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Category</span> <b class="caret"></b>
+                    </a>
+                </li>
             </ul>
         </div>
 

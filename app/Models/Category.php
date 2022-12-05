@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mitra extends Model
+class Category extends Model
 {
     use HasFactory;
-    protected $table = 'mitras';
+    protected $table = 'categories';
     protected $primaryKey = 'id';
 
     protected $fillable =[
         'name',
-        'namaAdminPt',
-        'jk',
-        'notelp',
-        'email',
+        'type',
     ];
 }

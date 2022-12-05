@@ -1,48 +1,49 @@
 @extends('admin.layout')
+
 @section('content')
-        <form method="post" action="{{ route('mitra.update', Crypt::encrypt($data->id))}}">
-        {{ csrf_field() }}
-        <div class="content">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="card card-default">
-                        <div class="card-header">
-                            <h2>Edit Mitra</h2>
-                        </div>
+<form action="{{route('mitra.update',Crypt::encrypt($data->id))}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    {{ method_field('PUT') }}
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class=" card card-default">
+                    <div class="card-header card-header-border-bottom">
+                        <h2>Edit Mitra</h2>
                     </div>
-                    @include('admin.partials.flash')
-                    <diV class="card-body">
+                    <div class="card-body">
                         <div class="form-group">
                             <label class="form-label">Nama Perusahaan</label>
-                            <input type="text" class="form-control" name="name" value="{{$data->name}}">
+                            <input type="text" name='name' class="form-control" value="{{$data->name}}">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Nama Admin PT</label>
-                            <input type="text" name="namaAdminPt" class="form-control" value="{{$data->namaAdminPt}}">
+                            <label class="form-label">Nama Admin Perusahaan</label>
+                            <input type="text" name='namaAdminPt' class="form-control" value="{{$data->namaAdminPt}}">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Jenis Kelamin</label>
-                            <select class="form-control" name="jk">
+                            <select class="form-control" name='jk'>
                                 <option>Pilih Jenis Kelamin</option>
-                                <option value="Laki-laki" {{$data->jk == "Laki-laki" ? "selected" : ""}}>Laki-Laki</option>
-                                <option value="Perempuan" {{$data->jk == "Perempuan" ? "selected" : ""}}>Perempuan</option>
+                                <option value="laki-laki" {{$data->jk == "laki-laki" ? "selected" : ""}}>laki-laki</option>
+                                <option value="perempuan" {{$data->jk == "perempuan" ? "selected" : ""}}>perempuan</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Phone</label>
-                            <input type="text" class="form-control" name="notelp" value="{{$data->notelp}}">
+                            <label class="form-label">No telepon</label>
+                            <input type="text" name='notelp' class="form-control" value="{{$data->notelp}}">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" value="{{$data->email}}">
+                            <input type="text" name='email' class="form-control" value="{{$data->email}}">
                         </div>
                         <div class="form-footer pt-5 border-top">
-                            <button type="submit" class="btn btn-primary btn-default">Simpan</button>
-                            <a href="{{route('mitra.index')}}" class="btn btn-secondary btn-default">Kembali</a>
+                            <button type="submit" class="btn btn-primary btn-default">Save</button>
+                            <a href="{{route('mitra.index')}}" class="btn btn-secondary btn-default">Back</a>
                         </div>
-                    </diV>
+                    </div>
                 </div>
             </div>
         </div>
-        </form>
+    </div>
+</form>
 @endsection

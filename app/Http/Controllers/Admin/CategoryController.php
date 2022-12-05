@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\MitraRequest;
-use App\Models\Mitra;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 
-class MitraController implements ControllerInterface
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +19,9 @@ class MitraController implements ControllerInterface
      */
     public function index()
     {
-        $data = Mitra::orderBy('name', 'ASC')->paginate(10);
+        $data = Category::orderBy('name', 'ASC')->paginate(10);
         $this->data['data'] = $data;
-        return view('admin.mitra.index', $this->data);
+        return view('admin.category.index', $this->data);
     }
 
     /**
@@ -29,7 +31,7 @@ class MitraController implements ControllerInterface
      */
     public function create()
     {
-        return view('admin.mitra.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -41,12 +43,12 @@ class MitraController implements ControllerInterface
     public function store(Request $request)
     {
         try {
-            if (Mitra::create($request->all())) {
-                Session::flash('success', 'Mitra has been saved');
+            if (Category::create($request->all())) {
+                Session::flash('success', 'Category has been saved');
             } else {
-                Session::flash('error', 'Mitra could not be saved');
+                Session::flash('error', 'Category could not be saved');
             }
-            return redirect()->route('mitra.index');
+            return redirect()->route('category.index');
         } catch (\Throwable $th) {
             Session::flash('error', "Periksa Kembali Isian");
             return redirect()->back();
@@ -72,9 +74,9 @@ class MitraController implements ControllerInterface
      */
     public function edit($id)
     {
-        $data = Mitra::findOrFail(Crypt::decrypt($id));
+        $data = Category::findOrFail(Crypt::decrypt($id));
         $this->data['data'] = $data;
-        return view('admin.mitra.edit', $this->data);
+        return view('admin.category.edit', $this->data);
     }
 
     /**
@@ -87,13 +89,13 @@ class MitraController implements ControllerInterface
     public function update(Request $request, $id)
     {
         try {
-            $data = Mitra::findOrFail(Crypt::decrypt($id));
+            $data = Category::findOrFail(Crypt::decrypt($id));
             if ($data->update($request->all())) {
-                Session::flash('success', 'Mitra has been updated');
+                Session::flash('success', 'Category has been updated');
             } else {
-                Session::flash('error', 'Mitra could not be update');
+                Session::flash('error', 'Category could not be update');
             }
-            return redirect()->route('mitra.index');
+            return redirect()->route('category.index');
         } catch (\Throwable $th) {
             Session::flash('error', "Periksa Kembali Isian");
             return redirect()->back();
@@ -108,12 +110,12 @@ class MitraController implements ControllerInterface
      */
     public function destroy($id)
     {
-        $data = Mitra::findOrFail(Crypt::decrypt($id));
+        $data = Category::findOrFail(Crypt::decrypt($id));
         if ($data->delete()) {
-            Session::flash('success', 'Mitra has been deleted');
+            Session::flash('success', 'category has been deleted');
         } else {
-            Session::flash('error', 'Mitra could not be delete');
+            Session::flash('error', 'category could not be delete');
         }
-        return redirect()->route('mitra.index');
+        return redirect()->route('category.index');
     }
 }
