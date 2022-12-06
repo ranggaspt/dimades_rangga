@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\EdibleProductController;
 use App\Http\Controllers\Admin\InedibleProductController;
 use App\Http\Controllers\Admin\MitraController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FoodProductController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,5 +21,5 @@ Route::get('/', function(){
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::resource('admin/mitra', MitraController::class)->middleware('auth')->names('mitra');
 Route::resource('admin/category', CategoryController::class)->middleware('auth')->names('category');
-
+Route::resource('admin/food', FoodProductController::class)->middleware('auth')->names('food');
 
